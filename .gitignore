@@ -1,0 +1,27 @@
+__pycache__/
+.env
+debug.log
+.pytest_cache
+
+# If you are using PyCharm #
+.idea
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Visual Studio Code #
+.vscode/*
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+venv
+request.http
+
+
