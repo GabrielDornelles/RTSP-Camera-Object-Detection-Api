@@ -1,4 +1,4 @@
-# RTPS-Camera-Object-Detection-Api
+# RTSP-Camera-Object-Detection-Api
 An API for IP camera video streaming and object detection with a faster-rcnn.
 
 Built with FastAPI and PyTorch.
