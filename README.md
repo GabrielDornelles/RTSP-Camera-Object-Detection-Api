@@ -11,6 +11,10 @@ uvicorn app:app
 ```
 ## Demo:
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/56324869/126047793-9cfb412a-9822-4b7a-b575-c225487cacb0.gif)
+
+## Full demo 
+https://www.youtube.com/watch?v=pYfVu-zjVeY
+
 # Environment variables
 This API was built using Intelbras cameras, this variables are related to the rtsp url, if you use a different type of camera, there's a variable **CUSTOM_URL** where you can just pass the entire url for your cameras at rtsp.
 
