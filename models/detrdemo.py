@@ -1,5 +1,4 @@
 from PIL import Image
-import matplotlib.pyplot as plt
 import torch
 from torch import nn
 from torchvision.models import resnet50
