@@ -17,7 +17,7 @@ CAMERA_IP = os.getenv("CAMERA_IP")
 RTSP_PORT = os.getenv("RTSP_PORT", "554")
 CUSTOM_URL = os.getenv("CUSTOM_URL",None)
 
-class ObjectDetection:
+class ObjectDetectionFasterRCNN:
     """
     Class with object detection and RTPS.
     """
@@ -68,7 +68,7 @@ class ObjectDetection:
         pred_class = pred_class[:pred_t+1]
         return pred_box, pred_class
     
-    def object_detection(self,img,threshold=0.8, rect_th=3, text_size=2, text_th=2):
+    def object_detection(self,img,threshold=0.8, rect_th=2, text_size=2, text_th=2):
         #img = cv2.resize(img,None,fx=1, fy=0.7, interpolation=cv2.INTER_CUBIC)
         boxes, pred_clas = self.get_prediction_gpu(img, threshold=threshold) if self.gpu else self.get_prediction_cpu(img, threshold=threshold)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

@@ -1,9 +1,16 @@
+import os
+from dotenv import load_dotenv, find_dotenv
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from fastapi import APIRouter, Request
-from services.object_detection import ObjectDetection
+from services.object_detection import ObjectDetectionFasterRCNN
+from services.object_detection_detr import ObjectDetectionDETR
 from fastapi.responses import StreamingResponse
 router = InferringRouter()
+load_dotenv(find_dotenv())
+
+MODEL = os.getenv("MODEL", "DETR")
+GPU = os.getenv("GPU", False)
 
 @cbv(router)
 class RTSPObjectDetection:
@@ -24,5 +31,6 @@ class RTSPObjectDetection:
     description="Abre a Camera IP no canal desejado e detecta objetos na cena.\nParams: ?channel",
     response_description="Frame Buffer")
     def display_camera(self,channel: int = 0):
-        return StreamingResponse(ObjectDetection(channel=channel,gpu=True).display_camera(), media_type="multipart/x-mixed-replace;boundary=frame")
+        model = ObjectDetectionDETR(channel=channel,gpu=bool(GPU)) if MODEL=="DETR" else ObjectDetectionFasterRCNN(channel=channel,gpu=bool(GPU))
+        return StreamingResponse(model.display_camera(), media_type="multipart/x-mixed-replace;boundary=frame")
         
