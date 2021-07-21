@@ -34,7 +34,7 @@ class ObjectDetectionDETR:
         ])
         self.channel = str(channel)
         self.device = torch.device("cuda") if self.gpu else torch.device("cpu")
-        self.model = DETRdemo(num_classes=91)
+        self.model =DETRdemo(num_classes=91)
         state_dict = torch.hub.load_state_dict_from_url(url='https://dl.fbaipublicfiles.com/detr/detr_demo-da2a99e9.pth',check_hash=True)
         self.model.load_state_dict(state_dict)
         self.model.to(self.device)
@@ -111,7 +111,7 @@ class ObjectDetectionDETR:
         frame = self.draw_frame(img, boxes, scores)
         return frame
 
-    def display_camera(self,framerate: int = 4, threshold: int = 0.65):
+    def display_camera(self,framerate: int = 3, threshold: int = 0.65):
         prev = 0
         rtsp_url = f"rtsp://{USER}:{PASSWORD}@{CAMERA_IP}:{RTSP_PORT}/cam/realmonitor?channel={self.channel}&subtype=0" if CUSTOM_URL is None else CUSTOM_URL
         vcap = cv2.VideoCapture(rtsp_url)
@@ -121,6 +121,7 @@ class ObjectDetectionDETR:
             if time_elapsed > 1./framerate:
                 prev= time.time()
                 try:
+                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     frame = Image.fromarray(frame)
                     frame = self.object_detection(frame)
                     ret, jpeg =  cv2.imencode(".jpg", frame)
