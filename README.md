@@ -1,6 +1,5 @@
 # RTPS-Camera-Object-Detection-Api
-An API for IP camera video streaming and object detection using [DETR(DEtection TRansformer)](https://github.com/facebookresearch/detr) or Faster-rcnn. Both of them uses resnet50 as backbone but DETR is almost 5x faster
-
+An API for IP camera video streaming and object detection using [DETR(DEtection TRansformer)](https://github.com/facebookresearch/detr) or Faster-rcnn. Both of them uses resnet50 as backbone. DETR is about 4x faster but Faster-RCNN is more precise on real scenes.
 Built with FastAPI and PyTorch.
 # Install
 ```bash
@@ -55,3 +54,4 @@ Example: 127.0.0.1:8000/cam?channel=5
 - Custom set of categories on detection.
 - Track desired objects in a specific space of time.
 - Interface (now its just buffering the camera frames into the model and displaying at the cam route).
+- Implement best DETR and see if its still worse than faster-rcnn on accuracy.
