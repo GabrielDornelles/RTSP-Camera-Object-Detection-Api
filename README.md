@@ -2,12 +2,14 @@
 An API for IP camera video streaming and object detection using [DETR(DEtection TRansformer)](https://github.com/facebookresearch/detr) or Faster-rcnn. Both of them uses resnet50 as backbone. DETR is about 4x faster but Faster-RCNN is more precise on real scenes.
 Built with FastAPI and PyTorch.
 # Install
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
-uvicorn app:app
 ```
+>>> source install.sh
+```
+# Run
+```
+>>> uvicorn app:app
+```
+
 ## Demo:
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/56324869/126047793-9cfb412a-9822-4b7a-b575-c225487cacb0.gif)
 # Environment variables

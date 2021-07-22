@@ -111,7 +111,7 @@ class ObjectDetectionDETR:
         frame = self.draw_frame(img, boxes, scores)
         return frame
 
-    def display_camera(self,framerate: int = 3, threshold: int = 0.65):
+    def display_camera(self,framerate: int = 4, threshold: int = 0.65):
         prev = 0
         rtsp_url = f"rtsp://{USER}:{PASSWORD}@{CAMERA_IP}:{RTSP_PORT}/cam/realmonitor?channel={self.channel}&subtype=0" if CUSTOM_URL is None else CUSTOM_URL
         vcap = cv2.VideoCapture(rtsp_url)
