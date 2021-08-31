@@ -125,7 +125,8 @@ class ObjectDetectionDETR:
                     frame = Image.fromarray(frame)
                     frame = self.object_detection(frame)
                     ret, jpeg =  cv2.imencode(".jpg", frame)
-                    
+#                    raise Exception 
+
                     yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
                             bytearray(jpeg) + b'\r\n')
                 except Exception:

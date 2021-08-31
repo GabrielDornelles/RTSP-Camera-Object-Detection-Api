@@ -27,7 +27,7 @@ class RTSPObjectDetection:
     @router.get(
     '/cam',
     tags=["Camera"],
-    summary="Camera no canal desejado.",
+    summary="Camera no canal desejado com deteccao de objetos.",
     description="Abre a Camera IP no canal desejado e detecta objetos na cena.\nParams: ?channel",
     response_description="Frame Buffer")
     def display_camera(self,channel: int = 0):
