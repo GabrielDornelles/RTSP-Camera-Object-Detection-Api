@@ -61,7 +61,7 @@ class CameraStream:
             if framerate == -1:
                 while(1):
                     ret, frame = vcap.read()
-                    frame = frame[y1:y2, x1:x2]
+                    #frame = frame[y1:y2, x1:x2]
                     ret, jpeg =  cv2.imencode(".jpg", frame)
                     yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
                             bytearray(jpeg) + b'\r\n')         
@@ -98,15 +98,28 @@ class CameraStream:
     
     def usb_camera_binarize(self, k:int):
         """
+        apply k as the highest value for each color channel
+        Alternative:
         apply kernel on a hsv mask where
         Hue ranges from 0 to 180 , being k the max value
         Saturation ranges from 0 to 255 (unchanged)
         Value ranges from 0 to 255 (unchanged)
+
         returns: frame buffer with the masked image
         """
+
+       
         cam = cv2.VideoCapture(USB_CHANNEL) 
+        # use HUE 
         min_ = np.array([0,0,0], dtype = "uint16")
         k = np.array([k,255,255], dtype = "uint16") 
+        
+        # use RGB channels
+        #min_ = (0,0,0)
+        #k = (k,k,k)
+
+        #mask = cv2.inRange(img, lower, upper)
+        #img[mask != 0] = [0,0,255]
         while(1):
             try:
                 ret, frame = cam.read()
