@@ -1,13 +1,10 @@
 # RTSP-Camera-Object-Detection-Api
 An API for IP camera video streaming and object detection using [DETR(DEtection TRansformer)](https://github.com/facebookresearch/detr) or Faster-rcnn. Both of them uses resnet50 as backbone. DETR is about 4x faster but Faster-RCNN is more precise on real scenes.
 Built with FastAPI and PyTorch.
-# Install
-```
->>> source install.sh
-```
+
 # Run
-```
->>> uvicorn app:app
+```sh
+uvicorn app:app
 ```
 
 ## Demo:
